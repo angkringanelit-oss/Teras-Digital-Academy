@@ -1,88 +1,117 @@
 'use client';
 
-import { FaBook, FaPalette } from 'react-icons/fa';
 import Link from 'next/link';
+import Image from 'next/image';
+import { AcademicCapIcon, SparklesIcon, PaintBrushIcon, CpuChipIcon } from '@heroicons/react/24/outline';
 
 export default function Home() {
+  const features = [
+    {
+      icon: AcademicCapIcon,
+      title: "Interaktif",
+      description: "Materi disampaikan dengan video, animasi & game"
+    },
+    {
+      icon: SparklesIcon,
+      title: "AI-Powered",
+      description: "Kelas prompting & trik belajar cepat dengan AI"
+    },
+    {
+      icon: PaintBrushIcon,
+      title: "Seni Digital",
+      description: "Sanggar seni digital untuk kreativitas tanpa batas"
+    }
+  ];
+
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Selamat Datang di TerDig Academy
+      {/* Hero Section Glassmorphism */}
+      <div className="max-w-5xl mx-auto px-4 py-20 text-center">
+        <div className="glass-card px-8 py-12 relative overflow-hidden">
+          {/* Background grid pattern */}
+          <div className="absolute inset-0 bg-grid-slate-700/[0.05] bg-[length:40px_40px] -z-10"></div>
+          
+          <h1 className="font-heading text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-pink-400 animate-pulse-light">
+            Belajar + AI + Seni = Masa Depan!
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Bimbel Digital & Sanggar Seni Pertama yang Pakai AI
+          <p className="mt-4 text-slate-300 font-body text-lg">
+            Bimbel digital pertama dengan AI & maskot Star Kids dan Quen Child
           </p>
-          <div className="mt-10">
-            <a
-              href="/daftar-trial"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 transition duration-300"
-            >
-              Daftar Trial Gratis
-            </a>
+          
+          {/* Maskot Animasi */}
+          <div className="mt-8 flex justify-center gap-8">
+            <div className="maskot-float">
+              <Image 
+                src="/assets/Star Kids.png" 
+                alt="Star Kids" 
+                width={200} 
+                height={200} 
+                quality={80}
+                priority={false}
+                loading="eager"
+                className="hover:scale-110 transition-transform cursor-pointer"
+                style={{ animation: 'float 4s ease-in-out infinite, glow 3s ease-in-out infinite' }}
+              />
+            </div>
+            <div className="maskot-float">
+              <Image 
+                src="/assets/Quen Child.png" 
+                alt="Quen Child" 
+                width={200} 
+                height={200} 
+                quality={80}
+                priority={false}
+                loading="eager"
+                className="hover:scale-110 transition-transform cursor-pointer"
+                style={{ animation: 'float 4s ease-in-out infinite, glow 3s ease-in-out infinite' }}
+              />
+            </div>
           </div>
+          
+          {/* CTA Button */}
+          <Link 
+            href="/daftar-trial" 
+            className="mt-8 inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-cyan-400/50 transition-all hover:scale-105"
+          >
+            Daftar Trial Gratis
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </Link>
         </div>
       </div>
 
-      {/* Program Section */}
-      <div className="py-16 bg-white px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-              Program Kami
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
-              Pilih program yang sesuai dengan minat dan kebutuhan Anda
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Bimbel Digital Card */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow duration-300">
-              <div className="p-8">
-                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-600 mb-6">
-                  <FaBook size={32} />
+      {/* Section "Kenapa TerDig?" */}
+      <div className="max-w-6xl mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h2 className="font-heading text-3xl inline-flex items-center gap-2">
+            <CpuChipIcon className="h-8 w-8 text-cyan-400" />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+              Kenapa TerDig?
+            </span>
+          </h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {features.map((feature, index) => {
+            const IconComponent = feature.icon;
+            return (
+              <div 
+                key={index} 
+                className="glass-card p-6 text-center hover:-translate-y-1 transition-transform duration-300"
+              >
+                <div className="flex justify-center mb-4">
+                  <IconComponent className="h-10 w-10 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.8)] transition-all" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Bimbel Digital</h3>
-                <p className="text-gray-600 mb-6">
-                  Pembelajaran interaktif dengan teknologi AI yang membantu siswa memahami materi dengan lebih mudah dan menyenangkan.
+                <h3 className="font-heading text-xl font-bold text-cyan-300 mb-2">
+                  {feature.title}
+                </h3>
+                <p className="font-body text-slate-300">
+                  {feature.description}
                 </p>
-                <Link
-                  href="/program/bimbel"
-                  className="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800"
-                >
-                  Lihat Detail
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </Link>
               </div>
-            </div>
-
-            {/* Sanggar Seni Digital Card */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow duration-300">
-              <div className="p-8">
-                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-600 mb-6">
-                  <FaPalette size={32} />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Sanggar Seni Digital</h3>
-                <p className="text-gray-600 mb-6">
-                  Tempat berkreativitas dengan bimbingan ahli dan teknologi terkini untuk mengembangkan bakat seni digital Anda.
-                </p>
-                <Link
-                  href="/program/senidigital"
-                  className="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800"
-                >
-                  Lihat Detail
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </div>

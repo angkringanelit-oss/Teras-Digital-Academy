@@ -1,18 +1,7 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Layout from '../src/components/Layout';
 import { Poppins, Nunito } from 'next/font/google';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 const poppins = Poppins({
   weight: ['400', '600', '700'],
@@ -39,10 +28,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${nunito.variable}`}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="id" className={`${poppins.variable} ${nunito.variable}`}>
+      <head>
+      </head>
+      <body className="font-body bg-white text-slate-800 antialiased">
         <Layout>
           {children}
         </Layout>
