@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+set -e
+
+# Run linting
+npm run lint
+
+# Run type checking
+npx tsc --noEmit

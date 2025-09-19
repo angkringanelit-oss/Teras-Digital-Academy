@@ -1,0 +1,10 @@
+{
+  "namaSiswa": "John Doe",
+  "usia": "15",
+  "kelas": "SMP",
+  "namaOrangTua": "Jane Doe",
+  "email": "john.doe@example.com",
+  "whatsapp": "081234567890",
+  "pilihanProgram": "bimbel-digital",
+  "jadwalPreferensi": "2025-12-01"
+}
