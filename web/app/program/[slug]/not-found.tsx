@@ -20,10 +20,10 @@ export default function NotFound() {
               Silakan kembali ke halaman program untuk melihat program yang tersedia.
             </p>
             <Link 
-              href="/program" 
+              href="/" 
               className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors duration-300"
             >
-              Lihat Program
+              Kembali ke Beranda
             </Link>
           </div>
         </div>
